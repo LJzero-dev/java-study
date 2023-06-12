@@ -30,7 +30,10 @@
 				</select>
 			</td>
 			<td>게시글 작성 권한</td>
-			<td><label>회원<input type="radio" name="rl_write" value="y" /></label><label>비회원<input type="radio" name="rl_write" value="n" /></label></td>
+			<td>
+				<label>회원<input type="radio" name="rl_write" value="y" /></label>
+				<label>비회원<input type="radio" name="rl_write" value="n" /></label>
+			</td>
 		</tr>
 		<tr>
 			<td>댓글 사용 여부</td>
@@ -59,7 +62,7 @@
 			<td colspan="4">※ 개설 승인, 반려는 매우 많은 시간이 필요합니다.</td>
 		</tr>
 	</table><br />
-	<input style="position: fixed;  top: 420px;  left: 1000px;" type="submit" value="등록"><input style="position: fixed;  top: 420px;  left: 1050px;" type="button" value="취소">
+	<input style="position: fixed;  top: 550px;  left: 1000px;" type="submit" value="등록"><input style="position: fixed;  top: 550px;  left: 1050px;" type="button" value="취소">
 </form>
 </div>
 <%@ include file="../_inc/inc_foot.jsp" %>

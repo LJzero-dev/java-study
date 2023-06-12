@@ -9,7 +9,7 @@ if (request.getParameter("cpage") != null) cpage = Integer.parseInt(request.getP
 String schtype = request.getParameter("schtype");
 String keyword = request.getParameter("keyword");
 String schargs = "";
-String where =" where fl_isview = 'y' ";
+String where =" where rl_isview = 'y' ";
 
 if (schtype == null || schtype.equals("") || keyword == null || keyword.equals("")) {			// 검색을 하지 않은 경우
 	schtype = "";	keyword = "";
@@ -17,19 +17,20 @@ if (schtype == null || schtype.equals("") || keyword == null || keyword.equals("
 	keyword = getRequest(keyword);
 	URLEncoder.encode(keyword, "UTF-8");	// 쿼리스트링으로 주고 받는 검색어가 한글일 경우 IE에서 문제가 발생할 수도 있으므로 유니코드로 변환
 	
-	if (schtype.equals("tc")) {	// 검색조건이 '제목 + 내용'일 경우
-		where += " and (fl_title like '%" + keyword + "%' " + " or fl_content like '%" + keyword + "%') ";	
-	} else if (schtype.equals("writer")) {	// 검색조건이 '작성자'일 경우
-		where += " and fl_writer = '" + keyword + "'";
+
+	if (schtype.equals("all")) {	// 검색조건이 '제목 + 내용'일 경우
+		where += " and (rl_title like '%" + keyword + "%' " + " or rl_name like '%" + keyword + "%' " + " or rl_writer like '%" + keyword + "%') ";	
+	} else if (schtype.equals("b")) {	// 검색조건이 '작성자'일 경우
+		where += " and rl_writer = '" + keyword + "'";
 	} else {					// 검색조건이 '제목'이거나 '내용'일경우
-		where += " and fl_" + schtype + " like '%" + keyword + "%' ";
+		where += " and rl_title like '%" + keyword + "%' ";
 	}
 	schargs = "&schtype=" + schtype + "&keyword=" + keyword;	//	검색조건이 있을 경우 링크의 url에 붙일 쿼리스트링 완성
 }
 
 try {
 	stmt = conn.createStatement();
-	sql = "select count(*) from t_free_list " + where;	// 자유게시판 레코드의 개수(검색조건 포함)를 받아 올 쿼리
+	sql = "select count(*) from t_request_list " + where;	// 자유게시판 레코드의 개수(검색조건 포함)를 받아 올 쿼리
 	rs = stmt.executeQuery(sql);
 	if (rs.next()) rcnt = rs.getInt(1);	
 	
@@ -37,7 +38,8 @@ try {
 	if (rcnt % psize > 0) pcnt++;
 	
 	int start = (cpage -1) * psize;
-	sql = "";
+	sql = "select rl_idx, rl_ctgr, rl_title, rl_name, rl_writer, rl_status, rl_isview, if (date(rl_date) = curdate(), time(rl_date), replace(mid(rl_date, 3, 8), '-', '.')) rldate"
+			+ " from t_request_list " + where + "  order by rl_idx desc limit " + start + " , " + psize;
 	rs = stmt.executeQuery(sql);
 	// System.out.println(sql);
 } catch (Exception e) {
@@ -50,24 +52,54 @@ try {
 <form style="width:430px; background:#1E4B79; display:inline-block; margin-left: 523px;  position: fixed; " name="frmSch">
 <fieldset>
 		<select name="schtype">
-			<option value="all" >전체</option>
-			<option value="a" >제목</option>
-			<option value="b" >작성자</option>
+			<option value="all" <% if (schtype.equals("all")) { %>selected="selected"<% } %>>전체</option>
+			<option value="a" <% if (schtype.equals("a")) { %>selected="selected"<% } %>>제목</option>
+			<option value="b" <% if (schtype.equals("b")) { %>selected="selected"<% } %>>요청자</option>
 		</select>
 		게시판 이름
-		<input type="text" name="keyword"/>
+		<input type="text" name="keyword" value="<%=keyword %>" />
 		<input type="submit" value="검색" />
 </fieldset>
 </form>
 <br /><br />
 	<table width="1100">
 		<tr>
-			<th width="7%">번호</th><th width="*">제목</th><th width="12%">작성자</th><th width="12%">작성일</th><th width="7%">조회수</th>
+			<th width="7%">번호</th>
+			<th width="7%">분류</th>
+			<th width="15%">게시판 이름</th>
+			<th width="*">제목</th>
+			<th width="12%">요청자</th>
+			<th width="12%">요청일</th><th width="10%">승인여부</th>
 		</tr>
-		<tr>
-			<td><b>22</b></td><td><span style="float:left;"><a href=""></a></span></td><td>홍길동</td><td>2023-06-03</td><td>20</td>
-		</tr>
-	</table>	
+<%
+if (rs.next()) {
+	int num = rcnt - (cpage - 1) * psize;
+	do { 
+		int titleCnt = 24;
+		String  title = rs.getString("rl_title"), writer = rs.getString("rl_writer"), ctgr = rs.getString("rl_ctgr").equals("a") ? "게임" : rs.getString("rl_ctgr").equals("b") ? "연예" : "스포츠";					
+		String date = rs.getString("rldate"), status = rs.getString("rl_status").equals("a") ? "[승인대기중]" : rs.getString("rl_status").equals("y") ? "[승인]" : "[미승인]";
+		if (title.length() > titleCnt) 
+			title = title.substring(0,titleCnt-3) + "...";
+		title = "<a href='request_view.jsp?idx=" + rs.getInt("rl_idx") + "&cpage=" + cpage + schargs+ "'>" + title + "</a>";
+		
+%>
+<tr>
+<td><%=num %></td>
+<td><%=ctgr %></td>
+<td><%=writer %></td>
+<td align="left"><%=title %></td>
+<td><%=writer %></td>
+<td><%=date %></td>
+<td><%=status %></td>
+</tr>	
+<% 
+	num--;
+	} while(rs.next());
+}else {
+		out.print("<tr height='30'><td colspan='7'>검색결과가 없습니다.</td></tr>");
+} %>
+</table>
+<br />	
 </div>
 <br />
 <table width="1100">

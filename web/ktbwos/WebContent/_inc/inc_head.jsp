@@ -54,9 +54,15 @@ if (request.getQueryString() != null)
 <body>
 <div width="1100">
 <a href="<%=ROOT_URL %>"><img style="width:200px" src="/ktbwos/img/ktbwos.png"></a>
-<a style="display:inline-block; margin-top: 50px; margin-left: 660px;  position: fixed;" href="">로그인/로그아웃 | </a><a style="display:inline-block; margin-top: 50px; margin-left: 800px;  position: fixed;" href="">회원 정보</a>
+<% if (isLogin) { %>
+<a style="display:inline-block; margin-top:50px; margin-left:660px;  position:fixed;" href="/ktbwos/logout.jsp">로그아웃 </a>
+<a style="display:inline-block; margin-top:50px; margin-left:800px;  position:fixed;" href="/ktbwos/member_info.jsp">회원 정보</a>
+<% } else { %>
+<a style="display:inline-block; margin-top:50px; margin-left:660px;  position:fixed;" href="/ktbwos/login_form.jsp">로그인 </a>
+<% } %>
 </div>
 <br />
+
 
 <table width="1100">
 	<tr>

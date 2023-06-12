@@ -6,12 +6,15 @@
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="writer" key="selection"/>
+		<item value="" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="공지"/>
+			<item value="rl_isvie"/>
+			<item value="rl_isview"/>
 			<item value="writer"/>
 			<item value="fl_title"/>
 			<item value="upLink"/>
@@ -24,9 +27,6 @@
 			<item value="정말"/>
 			<item value="notice_proc_del"/>
 			<item value="del"/>
-			<item value="args"/>
-			<item value="out.close();"/>
-			<item value="nl_ctgr"/>
 		</list>
 		<list key="replacehistory">
 		</list>

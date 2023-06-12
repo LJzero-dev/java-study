@@ -113,7 +113,7 @@ create table t_request_list (
    rl_ctgr char(1) default 'a',					-- 게시판 테마 분류
    rl_title varchar(50) not null,				-- 요청 제목
    rl_name varchar(50) unique not null,			-- 게시판 이름
-   mi_idx int not null,							-- 회원 번호
+   rl_writer varchar(20) not null,				-- 작성자
    rl_write char(1) not null,					-- 글작성 권한여부
    rl_reply_use char(1) not null,				-- 댓글 사용 여부
    rl_reply_write char(1),						-- 댓글 작성 권한
@@ -121,11 +121,12 @@ create table t_request_list (
    rl_status char(1) default 'a',				-- 승인여부
    rl_reason varchar(50),						-- 미승인사유
    rl_isview char(1) default 'y',				-- 게시여부
-   rl_date datetime default now(),				-- 요청일
-	constraint fk_request_list_mi_idx foreign key(mi_idx) references t_member_info(mi_idx)
+   rl_date datetime default now()				-- 요청일
 );
 
-insert into t_request_list (rl_ctgr, rl_title, rl_name, mi_idx, rl_write, rl_reply_use, rl_reply_write) values ('a', '홍길동 키우기 게시판 요청합니다', '홍길동 키우기', 1, 'y', 'y', 'y');
+insert into t_request_list (rl_ctgr, rl_title, rl_name, rl_writer, rl_write, rl_reply_use, rl_reply_write) values ('a', '홍길동 키우기 게시판 요청합니다', '홍길동 키우기', '홍길동', 'y', 'y', 'y');
+insert into t_request_list (rl_ctgr, rl_title, rl_name, rl_writer, rl_write, rl_reply_use, rl_reply_write) values ('a', '홍길동 키우기 게시판 요청합니다2', '홍길동 키우기2', '전우치', 'y', 'y', 'y');
+insert into t_request_list (rl_ctgr, rl_title, rl_name, rl_writer, rl_write, rl_reply_use, rl_reply_write) values ('a', '홍길동 키우기 게시판 요청합니다3', '홍길동 키우기3', '홍길동', 'y', 'y', 'y');
 select * from t_request_list;
 
 
@@ -144,6 +145,12 @@ create table t_best_list (
 
 
 select bl_date from t_best_list where bl_date < left(now(), 7) and bl_date > left(DATEADD(DAY, -10, now()), 7);
+
+select mi_id from t_member_info where mi_idx = 1;
+select * from t_request_list;
+select * from t_member_info;
+
+
 
 
 

@@ -9,7 +9,7 @@ if (request.getParameter("cpage") != null) cpage = Integer.parseInt(request.getP
 String schtype = request.getParameter("schtype");
 String keyword = request.getParameter("keyword");
 String schargs = "";
-String where =" where rl_isview = 'y' ";
+String where =" where 1=1 ";
 
 if (schtype == null || schtype.equals("") || keyword == null || keyword.equals("")) {			// 검색을 하지 않은 경우
 	schtype = "";	keyword = "";
@@ -38,7 +38,7 @@ try {
 	if (rcnt % psize > 0) pcnt++;
 	
 	int start = (cpage -1) * psize;
-	sql = "select rl_idx, rl_ctgr, rl_title, rl_name, rl_writer, rl_status, rl_isview, if (date(rl_date) = curdate(), time(rl_date), replace(mid(rl_date, 3, 8), '-', '.')) rldate"
+	sql = "select rl_idx, rl_ctgr, rl_title, rl_name, rl_writer, rl_status, if (date(rl_date) = curdate(), time(rl_date), replace(mid(rl_date, 3, 8), '-', '.')) rldate"
 			+ " from t_request_list " + where + "  order by rl_idx desc limit " + start + " , " + psize;
 	rs = stmt.executeQuery(sql);
 	// System.out.println(sql);

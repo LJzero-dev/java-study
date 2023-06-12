@@ -120,14 +120,15 @@ create table t_request_list (
    rl_table_name varchar(20),					-- 테이블 이름
    rl_status char(1) default 'a',				-- 승인여부
    rl_reason varchar(50),						-- 미승인사유
-   rl_isview char(1) default 'y',				-- 게시여부
+   rl_content text not null,					-- 요청내용
    rl_date datetime default now()				-- 요청일
 );
 
-insert into t_request_list (rl_ctgr, rl_title, rl_name, rl_writer, rl_write, rl_reply_use, rl_reply_write) values ('a', '홍길동 키우기 게시판 요청합니다', '홍길동 키우기', '홍길동', 'y', 'y', 'y');
-insert into t_request_list (rl_ctgr, rl_title, rl_name, rl_writer, rl_write, rl_reply_use, rl_reply_write) values ('a', '홍길동 키우기 게시판 요청합니다2', '홍길동 키우기2', '전우치', 'y', 'y', 'y');
-insert into t_request_list (rl_ctgr, rl_title, rl_name, rl_writer, rl_write, rl_reply_use, rl_reply_write) values ('a', '홍길동 키우기 게시판 요청합니다3', '홍길동 키우기3', '홍길동', 'y', 'y', 'y');
+insert into t_request_list (rl_ctgr, rl_title, rl_name, rl_writer, rl_write, rl_reply_use, rl_reply_write, rl_content) values ('a', '홍길동 키우기 게시판 요청합니다', '홍길동 키우기', '홍길동', 'y', 'y', 'y', '홍길동을 키우고 싶습니다');
+insert into t_request_list (rl_ctgr, rl_title, rl_name, rl_writer, rl_write, rl_reply_use, rl_reply_write, rl_content) values ('a', '홍길동 키우기 게시판 요청합니다2', '홍길동 키우기2', '전우치', 'y', 'y', 'y', '홍길동을 키우고 싶습니다2');
+insert into t_request_list (rl_ctgr, rl_title, rl_name, rl_writer, rl_write, rl_reply_use, rl_reply_write, rl_content) values ('a', '홍길동 키우기 게시판 요청합니다3', '홍길동 키우기3', '홍길동', 'y', 'y', 'y', '홍길동을 키우고 싶습니다3');
 select * from t_request_list;
+
 
 
 drop table t_best_list;

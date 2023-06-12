@@ -63,3 +63,9 @@
 0:0:0:0:0:0:0:1 - - [12/Jun/2023:21:12:44 +0900] "GET /jspSite/bbs/free_list.jsp HTTP/1.1" 200 2584
 0:0:0:0:0:0:0:1 - - [12/Jun/2023:21:12:56 +0900] "GET /ktbwos/bbs/request_list.jsp HTTP/1.1" 200 2643
 0:0:0:0:0:0:0:1 - - [12/Jun/2023:21:12:56 +0900] "GET /ktbwos/img/ktbwos.png HTTP/1.1" 200 10617
+127.0.0.1 - - [12/Jun/2023:21:34:13 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [12/Jun/2023:21:34:14 +0900] "GET /git/helloGit.jsp HTTP/1.1" 200 266
+0:0:0:0:0:0:0:1 - - [12/Jun/2023:21:34:24 +0900] "GET /git/helloGit.jsp HTTP/1.1" 200 266
+0:0:0:0:0:0:0:1 - - [12/Jun/2023:21:39:10 +0900] "GET /ktbwos/index.jsp HTTP/1.1" 200 1383
+0:0:0:0:0:0:0:1 - - [12/Jun/2023:21:39:10 +0900] "GET /ktbwos/img/ktbwos.png HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [12/Jun/2023:21:39:12 +0900] "GET /ktbwos/bbs/request_list.jsp HTTP/1.1" 200 2645

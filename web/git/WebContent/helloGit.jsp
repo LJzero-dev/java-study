@@ -7,12 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<<<<<<< HEAD
 	index
 	ㄴㄴㄴㄴㄴ
-=======
-    index
     ㅋㅋㅋㅋ
->>>>>>> origin/main
 </body>
 </html>

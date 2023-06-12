@@ -68,4 +68,5 @@ if (request.getQueryString() != null)
 		<th><a style="color:white;" href="/ktbwos/bbs/qna_list.jsp">QnA</a></th>
 	</tr>
 </table>
+
 <br />

@@ -1,0 +1,47 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style>
+	a:link { color:black; text-decoration:none; }
+	a:visited { color:black; text-decoration:none; }
+	a:hover { color:black; text-decoration:underline; }
+	table, th, td {
+	border:2px solid black;
+	border-collapse : collapse;
+	}
+	th { background-color:#5B9BD5; color:white;}
+	td { text-align:center;}
+</style>
+<title>Insert title here</title>
+</head>
+<body>
+
+<div width="1100">
+aa
+<form style="width:330px; background:#1E4B79; display:inline-block; " name="frmSch">
+<fieldset>
+		<select name="schtype">
+			<option value="all" >전체</option>
+			<option value="title" >제목</option>
+			<option value="content" >내용</option>
+			<option value="writer" >글쓴이</option>
+		</select>
+		<input type="text" name="keyword" value="" />
+		<input type="submit" value="검색" />
+</fieldset>
+</form>
+
+	<table width="1100">
+		<tr>
+			<th width="7%">번호</th><th width="*">제목</th><th width="12%">작성자</th><th width="12%">작성일</th><th width="7%">조회수</th>
+		</tr>
+		<tr>
+			<td><b>22</b></td><td><span style="float:left;">자료글 25입니다.111111111111111111111<a href="">aaa</a></span></td><td>홍길동</td><td>2023-06-03</td><td>20</td>
+		</tr>
+	</table>
+	
+</div>	
+</body>
+</html>

@@ -1,0 +1,28 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+	request.setCharacterEncoding("utf-8");
+	String rl_ctgr = request.getParameter("rl_ctgr");
+	String rl_title = request.getParameter("rl_title");
+	String rl_name = request.getParameter("rl_name");
+	String mi_id = request.getParameter("mi_id");
+	String rl_write = request.getParameter("rl_write");
+	String rl_reply_use = request.getParameter("rl_reply_use");
+	String rl_reply_write = request.getParameter("rl_reply_write");
+	String rl_table_name = "";
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<%=rl_ctgr %>
+	<%=rl_title %>
+	<%=rl_name %>
+	<%=mi_id %>
+	<%=rl_write %>
+	<%=rl_reply_use %>
+	<%=rl_reply_write %>
+</body>
+</html>

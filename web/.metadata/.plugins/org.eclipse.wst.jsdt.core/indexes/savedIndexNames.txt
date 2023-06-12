@@ -1,0 +1,25 @@
+INDEX VERSION 1.4+E:\LJzero\java-study\web\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+4236309400.index
+250578458.index
+1351039986.index
+253538695.index
+1023144089.index
+2087448442.index
+2131822481.index
+1581987515.index
+2345166938.index
+1350498895.index
+3705786351.index
+1068117920.index
+3271193799.index
+3560754221.index
+3525460796.index
+3647699231.index
+3083928450.index
+2673510948.index
+3514320457.index
+4106244065.index
+648987399.index
+3634413796.index
+2631265121.index
+3303878366.index

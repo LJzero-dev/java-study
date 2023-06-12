@@ -1,0 +1,23 @@
+package user;
+
+import java.sql.Connection;
+import java.sql.Driver;
+import java.sql.DriverManager;
+
+public class UserDAO {
+	
+	private Connection conn;
+	
+	public UserDAO() {
+		try {
+			String driver = "com.mysql.cj.jdbc.Driver";
+			String dbURL = "jdbc:mysql://localhost:3306/register?useUnicode=true&characterEncoding=UTF8&verifyServerCertificate=false&useSSL=false&serverTimezone=UTC";
+			String dbID = "root";
+			String dbPassword = "1234";
+			Class.forName(driver);
+			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
+		} catch (Exception e) {
+			
+		}
+	}
+}

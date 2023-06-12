@@ -1,0 +1,13 @@
+ <Context> 
+   <Resource 
+	maxWait="-1" 
+	maxIdle="10" 
+	maxActive="20" 
+	password="1234" 
+	username="root" 
+	url="jdbc:mysql://localhost:3306/mall?useUnicode=true&characterEncoding=UTF8&verifyServerCertificate=false&useSSL=false&serverTimezone=UTC" 
+	type="javax.sql.DataSource" 
+	driverClassName="com.mysql.cj.jdbc.Driver" 
+	auth="Container" 
+	name="jdbc/OracleDB"/> 
+ </Context>

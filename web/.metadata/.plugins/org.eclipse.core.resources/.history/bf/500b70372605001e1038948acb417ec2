@@ -1,0 +1,9 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css)
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css)
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css)
+
+thead th {
+	background-color: #006DCC;
+	color: white;
+	text-align: center;
+}

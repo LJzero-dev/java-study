@@ -17,7 +17,7 @@
 --><!-- Note:  A "Server" is not itself a "Container", so you may not
      define subcomponents such as "Valves" at this level.
      Documentation at /docs/config/server.html
- --><Server port="9000" shutdown="SHUTDOWN">
+ --><Server port="8090" shutdown="SHUTDOWN">
   <Listener className="org.apache.catalina.startup.VersionLoggerListener"/>
   <!-- Security listener. Documentation at /docs/config/listeners.html
   <Listener className="org.apache.catalina.security.SecurityListener" />
@@ -58,13 +58,13 @@
          Java HTTP Connector: /docs/config/http.html
          Java AJP  Connector: /docs/config/ajp.html
          APR (HTTP/AJP) Connector: /docs/apr.html
-         Define a non-SSL/TLS HTTP/1.1 Connector on port 8087
+         Define a non-SSL/TLS HTTP/1.1 Connector on port 8088
     -->
-    <Connector connectionTimeout="20000" maxParameterCount="1000" port="8087" protocol="HTTP/1.1" redirectPort="8443"/>
+    <Connector connectionTimeout="20000" maxParameterCount="1000" port="8091" protocol="HTTP/1.1" redirectPort="8443"/>
     <!-- A "Connector" using the shared thread pool-->
     <!--
     <Connector executor="tomcatThreadPool"
-               port="8087" protocol="HTTP/1.1"
+               port="8088" protocol="HTTP/1.1"
                connectionTimeout="20000"
                redirectPort="8443"
                maxParameterCount="1000"
@@ -160,9 +160,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="E:\LJzero\java-study\web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="E:\LJzero\java-study\web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\dbTest" path="/dbTest" reloadable="true" source="org.eclipse.jst.jee.server:dbTest"/><Context docBase="E:\LJzero\java-study\web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\sessCookie" path="/sessCookie" reloadable="true" source="org.eclipse.jst.jee.server:sessCookie"/><Context docBase="E:\LJzero\java-study\web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\errUploadMail" path="/errUploadMail" reloadable="true" source="org.eclipse.jst.jee.server:errUploadMail"/><Context docBase="E:\LJzero\java-study\web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\jspSite" path="/jspSite" reloadable="true" source="org.eclipse.jst.jee.server:jspSite"/><Context docBase="E:\LJzero\java-study\web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\basic" path="/basic" reloadable="true" source="org.eclipse.jst.jee.server:basic"/><Context docBase="E:\LJzero\java-study\web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Ajax" path="/Ajax" reloadable="true" source="org.eclipse.jst.jee.server:Ajax"/><Context docBase="E:\LJzero\java-study\web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Model2-Sign" path="/Model2-Board" reloadable="true" source="org.eclipse.jst.jee.server:Model2-Sign"> 
-   <Resource auth="Container" driverClassName="oracle.jdbc.driver.OracleDriver" maxActive="20" maxIdle="10" maxWait="-1" name="jdbc/OracleDB" password="1234" type="javax.sql.DataSource" url="jdbc:oracle:thin:@127.0.0.1:1521:XE" username="root"/> 
- </Context><Context docBase="E:\LJzero\java-study\web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ktbwos" path="/ktbwos" reloadable="true" source="org.eclipse.jst.jee.server:ktbwos"/><Context docBase="E:\LJzero\java-study\web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\git" path="/git" reloadable="true" source="org.eclipse.jst.jee.server:git"/></Host>
+      <Context docBase="E:\new\web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="E:\new\web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\dbTest" path="/dbTest" reloadable="true" source="org.eclipse.jst.jee.server:dbTest"/><Context docBase="E:\new\web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\sessCookie" path="/sessCookie" reloadable="true" source="org.eclipse.jst.jee.server:sessCookie"/><Context docBase="E:\new\web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\errUploadMail" path="/errUploadMail" reloadable="true" source="org.eclipse.jst.jee.server:errUploadMail"/><Context docBase="E:\new\web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\jspSite" path="/jspSite" reloadable="true" source="org.eclipse.jst.jee.server:jspSite"/><Context docBase="E:\new\web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ktbwos" path="/ktbwos" reloadable="true" source="org.eclipse.jst.jee.server:ktbwos"/><Context docBase="E:\new\web\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\basic" path="/basic" reloadable="true" source="org.eclipse.jst.jee.server:basic"/></Host>
     </Engine>
   </Service>
 </Server>

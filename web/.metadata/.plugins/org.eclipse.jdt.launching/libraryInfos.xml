@@ -21,21 +21,21 @@
 </libraryInfo>
 <libraryInfo home="E:\ljy\setting\java1.8\jre" version="1.8.0_181">
 <bootpath>
-<entry path="E:\ljy\setting\java1.8\jre\jre\lib\resources.jar"/>
-<entry path="E:\ljy\setting\java1.8\jre\jre\lib\rt.jar"/>
-<entry path="E:\ljy\setting\java1.8\jre\jre\lib\sunrsasign.jar"/>
-<entry path="E:\ljy\setting\java1.8\jre\jre\lib\jsse.jar"/>
-<entry path="E:\ljy\setting\java1.8\jre\jre\lib\jce.jar"/>
-<entry path="E:\ljy\setting\java1.8\jre\jre\lib\charsets.jar"/>
-<entry path="E:\ljy\setting\java1.8\jre\jre\lib\jfr.jar"/>
-<entry path="E:\ljy\setting\java1.8\jre\jre\classes"/>
+<entry path="E:\ljy\setting\java1.8\jre\lib\resources.jar"/>
+<entry path="E:\ljy\setting\java1.8\jre\lib\rt.jar"/>
+<entry path="E:\ljy\setting\java1.8\jre\lib\sunrsasign.jar"/>
+<entry path="E:\ljy\setting\java1.8\jre\lib\jsse.jar"/>
+<entry path="E:\ljy\setting\java1.8\jre\lib\jce.jar"/>
+<entry path="E:\ljy\setting\java1.8\jre\lib\charsets.jar"/>
+<entry path="E:\ljy\setting\java1.8\jre\lib\jfr.jar"/>
+<entry path="E:\ljy\setting\java1.8\jre\classes"/>
 </bootpath>
 <extensionDirs>
-<entry path="E:\ljy\setting\java1.8\jre\jre\lib\ext"/>
+<entry path="E:\ljy\setting\java1.8\jre\lib\ext"/>
 <entry path="C:\Windows\Sun\Java\lib\ext"/>
 </extensionDirs>
 <endorsedDirs>
-<entry path="E:\ljy\setting\java1.8\jre\jre\lib\endorsed"/>
+<entry path="E:\ljy\setting\java1.8\jre\lib\endorsed"/>
 </endorsedDirs>
 </libraryInfo>
 </libraryInfos>

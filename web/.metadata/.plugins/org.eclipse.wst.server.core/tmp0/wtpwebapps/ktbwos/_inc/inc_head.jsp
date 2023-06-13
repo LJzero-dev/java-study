@@ -52,19 +52,19 @@ if (request.getQueryString() != null)
 <title>1석2조</title>
 </head>
 <body>
-<div width="1100">
+<div style="width:1100px; margin:0 auto;">
 <a href="<%=ROOT_URL %>"><img style="width:200px" src="/ktbwos/img/ktbwos.png"></a>
 <% if (isLogin) { %>
-<a style="display:inline-block; margin-top:50px; margin-left:660px;  position:fixed;" href="/ktbwos/logout.jsp">로그아웃 </a>
+<a style="display:inline-block; margin-top:50px; margin-left:700px;  position:fixed;" href="/ktbwos/logout.jsp">로그아웃 </a>
 <a style="display:inline-block; margin-top:50px; margin-left:800px;  position:fixed;" href="/ktbwos/member_info.jsp">회원 정보</a>
 <% } else { %>
-<a style="display:inline-block; margin-top:50px; margin-left:660px;  position:fixed;" href="/ktbwos/login_form.jsp">로그인 </a>
+<a style="display:inline-block; margin-top:50px; margin-left:700px;  position:fixed;" href="/ktbwos/login_form.jsp">로그인 </a>
 <% } %>
 </div>
 <br />
 
 
-<table width="1100">
+<table width="1100" align="center">
 	<tr>
 		<th><a style="color:white;" href="/ktbwos/bbs/notice_list.jsp">공지사항</a></th>
 		<th><a style="color:white;" href="/ktbwos/bbs/free_list.jsp">자유게시판</a></th>

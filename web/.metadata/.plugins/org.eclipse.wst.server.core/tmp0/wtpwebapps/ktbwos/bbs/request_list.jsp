@@ -47,22 +47,33 @@ try {
 	e.printStackTrace();
 }
 %>
-<div width="1100">
-<input type="button" value="전체글">  게시판 요청
-<form style="width:430px; background:#1E4B79; display:inline-block; margin-left: 523px;  position: fixed; " name="frmSch">
-<fieldset>
-		<select name="schtype">
+
+
+
+
+
+
+	
+<style>
+	input[type="submit"] {border:1px solid #000; width:60px; background:transparent; cursor:pointer; background:#fff;}
+	.alltext {display:inline-block; float:left; width:80px; padding:5px 0; border:1px solid #000; text-align:center;}
+</style>
+
+<div style="width:1100px; margin:0 auto;">
+	<a href="/ktbwos/bbs/request_list.jsp" class="alltext">전체글</a>
+	<span style="display:inline-block; float:left; margin-top:5px; margin-left:10px;">요청 게시판</span>
+	<form name="frmSch" style="margin-bottom:0;">
+		<fieldset style=" width:335px; margin-left:737px; background:#1E4B79;">
+			<select name="schtype">
 			<option value="all" <% if (schtype.equals("all")) { %>selected="selected"<% } %>>전체</option>
 			<option value="a" <% if (schtype.equals("a")) { %>selected="selected"<% } %>>제목</option>
 			<option value="b" <% if (schtype.equals("b")) { %>selected="selected"<% } %>>요청자</option>
-		</select>
-		게시판 이름
+			</select>
 		<input type="text" name="keyword" value="<%=keyword %>" />
-		<input type="submit" value="검색" />
-</fieldset>
-</form>
-<br /><br />
-	<table width="1100">
+		<input type="submit" value="검색" />&nbsp;&nbsp;&nbsp;&nbsp;
+		</fieldset>
+	</form>
+	<table width="1100" border="0" cellpadding="0" cellspacing="0" id="list">
 		<tr>
 			<th width="7%">번호</th>
 			<th width="7%">분류</th>
@@ -78,15 +89,15 @@ if (rs.next()) {
 		int titleCnt = 24;
 		String  title = rs.getString("rl_title"), writer = rs.getString("rl_writer"), ctgr = rs.getString("rl_ctgr").equals("a") ? "게임" : rs.getString("rl_ctgr").equals("b") ? "연예" : "스포츠";					
 		String date = rs.getString("rldate"), status = rs.getString("rl_status").equals("a") ? "[승인대기중]" : rs.getString("rl_status").equals("y") ? "[승인]" : "[미승인]";
+		String name = rs.getString("rl_name");
 		if (title.length() > titleCnt) 
 			title = title.substring(0,titleCnt-3) + "...";
 		title = "<a href='request_view.jsp?idx=" + rs.getInt("rl_idx") + "&cpage=" + cpage + schargs+ "'>" + title + "</a>";
-		
 %>
 <tr>
 <td><%=num %></td>
 <td><%=ctgr %></td>
-<td><%=writer %></td>
+<td><%=name %></td>
 <td align="left"><%=title %></td>
 <td><%=writer %></td>
 <td><%=date %></td>
@@ -102,7 +113,7 @@ if (rs.next()) {
 <br />	
 </div>
 <br />
-<table width="1100">
+<table width="1100" align="center">
 <tr>
 <td width="900">
 <%

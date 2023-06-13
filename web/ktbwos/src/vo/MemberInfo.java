@@ -1,7 +1,7 @@
 package vo;
 public class MemberInfo {
 	private String mi_id, mi_email, mi_nick, mi_pw, mi_status, mi_reason, mi_self, mi_date, mi_lastlogin; 
-	private int mi_idx;
+	private int mi_idx, mi_count;
 	public String getMi_id() {
 		return mi_id;
 	}
@@ -43,6 +43,12 @@ public class MemberInfo {
 	}
 	public void setMi_self(String mi_self) {
 		this.mi_self = mi_self;
+	}
+	public int getMi_count() {
+		return mi_count;
+	}
+	public void setMi_count(int mi_count) {
+		this.mi_count = mi_count;
 	}
 	public String getMi_date() {
 		return mi_date;

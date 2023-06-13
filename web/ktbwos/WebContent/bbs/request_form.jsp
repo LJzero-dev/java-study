@@ -72,8 +72,15 @@ if (kind.equals("up")) {	// 게시글 수정 폼일 경우
 		}
 	}
 </script>
-<div width="1100">
-<input type="button" value="전체글">  게시판 요청<br /><br />
+<style>
+	input[type="submit"] {border:1px solid #000; width:60px; background:transparent; cursor:pointer; background:#fff;}
+	input[type="button"] {border:1px solid #000; width:60px; background:transparent; cursor:pointer; background:#fff;}
+	.alltext {display:inline-block; float:left; width:80px; padding:5px 0; border:1px solid #000; text-align:center;}
+</style>
+
+<div style="width:1100px; margin:0 auto;">
+	<a href="/ktbwos/bbs/request_list.jsp" class="alltext">전체글</a>
+	<span style="display:inline-block; float:left; margin-top:5px; margin-left:10px;">요청 게시판</span>
 <form action="request_proc.jsp">
 	<table width="1100" >	
 		<tr>
@@ -125,8 +132,10 @@ if (kind.equals("up")) {	// 게시글 수정 폼일 경우
 			<td colspan="4">※ 개설 승인, 반려는 매우 많은 시간이 필요합니다.</td>
 		</tr>
 	</table><br />
-	<input  style="position: fixed;  top: 550px;  left: 1000px;" type="submit" value="<%=caption %>">
-	<input style="position: fixed;  top: 550px;  left: 1050px;" type="button" value="취소" onclick="history.back();">
+	<span style="display:inline-block; float:right; margin-top:5px; margin-left:10px;">
+		<input type="submit" value="<%=caption %>">
+		<input type="button" value="취소" onclick="history.back();">
+	</span>
 </form>
 </div>
 

@@ -27,15 +27,15 @@ try {
 	e.printStackTrace();
 }
 
-final String ROOT_URL = "/ktbwos/index.jsp"; 
+final String ROOT_URL = "/ktbwos/index.jsp";
 boolean isLogin = false;
 MemberInfo loginInfo = (MemberInfo)session.getAttribute("loginInfo");
 if (loginInfo != null) isLogin = true;
-
-
 String loginUrl = request.getRequestURI();
 if (request.getQueryString() != null)
 	loginUrl += "?" + URLEncoder.encode(request.getQueryString().replace('&', '~'), "UTF-8");	// 현재 화면의 url로 로그인 폼 등에서 사용할 값
+	
+	
 %>
 <style>
 	a:link { color:black; text-decoration:none; }
@@ -56,7 +56,7 @@ if (request.getQueryString() != null)
 <a href="<%=ROOT_URL %>"><img style="width:200px" src="/ktbwos/img/ktbwos.png"></a>
 <% if (isLogin) { %>
 <a style="display:inline-block; margin-top:50px; margin-left:700px;  position:fixed;" href="/ktbwos/logout.jsp">로그아웃 </a>
-<a style="display:inline-block; margin-top:50px; margin-left:800px;  position:fixed;" href="/ktbwos/member_info.jsp">회원 정보</a>
+<a style="display:inline-block; margin-top:50px; margin-left:800px;  position:fixed;" href="/ktbwos/member/member_info.jsp">회원 정보</a>
 <% } else { %>
 <a style="display:inline-block; margin-top:50px; margin-left:700px;  position:fixed;" href="/ktbwos/login_form.jsp">로그인 </a>
 <% } %>

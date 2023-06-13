@@ -10,7 +10,6 @@ if (request.getParameter("cpage") != null)
 String schtype = request.getParameter("schtype");
 String keyword = request.getParameter("keyword");
 String schargs = "";
-
 %>
 
 <style>

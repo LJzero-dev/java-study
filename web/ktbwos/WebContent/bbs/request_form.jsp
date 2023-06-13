@@ -31,15 +31,15 @@ if (kind.equals("up")) {	// 게시글 수정 폼일 경우
 		stmt = conn.createStatement();
 		rs = stmt.executeQuery(sql);
 		if (rs.next()) {
-			rl_ctgr = request.getParameter("rl_ctgr");
-			rl_title = request.getParameter("rl_title");
-			rl_name = request.getParameter("rl_name");
-			rl_writer = request.getParameter("rl_writer");
-			rl_write = request.getParameter("rl_write");
-			rl_reply_use = request.getParameter("rl_reply_use");
-			rl_reply_write = request.getParameter("rl_reply_write");
-			rl_table_name = request.getParameter("rl_table_name");
-			rl_content = request.getParameter("rl_content");
+			rl_ctgr = rs.getString("rl_ctgr");
+			rl_title = rs.getString("rl_title");
+			rl_name = rs.getString("rl_name");
+			rl_writer = rs.getString("rl_writer");
+			rl_write = rs.getString("rl_write");
+			rl_reply_use = rs.getString("rl_reply_use");
+			rl_reply_write = rs.getString("rl_reply_write");
+			rl_table_name = rs.getString("rl_table_name");
+			rl_content = rs.getString("rl_content");
 		} else {
 			out.println("<script>");
 			out.println("alert('잘못된 경로로 들어오셨습니다.');");
@@ -81,14 +81,16 @@ if (kind.equals("up")) {	// 게시글 수정 폼일 경우
 <div style="width:1100px; margin:0 auto;">
 	<a href="/ktbwos/bbs/request_list.jsp" class="alltext">전체글</a>
 	<span style="display:inline-block; float:left; margin-top:5px; margin-left:10px;">요청 게시판</span>
-<form action="request_proc.jsp">
+<form action="request_proc_up.jsp" >
+<input type="hidden" name="idx" value="<%=idx %>">
+<input type="hidden" name="cpage" value="<%=cpage %>">
 	<table width="1100" >	
 		<tr>
 			<td>제목</td>
-			<td colspan="3"><input id="rl_title" type="text" placeholder="제목을 입력하세요" style="width:850px;"><%=rl_title %></td>
+			<td colspan="3"><input name="rl_title" type="text" placeholder="제목을 입력하세요" style="width:850px;" value="<%=rl_title %>"></td>
 		</tr >
 		<tr>
-			<td width="20%">아이디</td><td width="30%">홍길동</td><td width="20%">작성 글번호</td><td width="30%">2023-06-09</td>
+			<td width="20%">아이디</td><td name="rl_writer" width="30%">홍길동</td><td width="20%">작성 글번호</td><td width="30%">2023-06-09</td>
 		</tr>
 		<tr>
 			<td>분류</td>
@@ -101,29 +103,29 @@ if (kind.equals("up")) {	// 게시글 수정 폼일 경우
 			</td>
 			<td>게시글 작성 권한</td>
 			<td>
-				<label>회원<input type="radio" name="rl_write" value="y" /></label>
-				<label>비회원<input type="radio" name="rl_write" value="n" /></label>
+				<label>회원<input type="radio" name="rl_write" value="y" <% if (rl_write.equals("y")) { %>checked="checked"<% } %> /></label>
+				<label>비회원<input type="radio" name="rl_write" value="n" <% if (rl_write.equals("n")) { %>checked="checked"<% } %> /></label>
 			</td>
 		</tr>
 		<tr>
 			<td>댓글 사용 여부</td>
 			<td>
-				<label>사용<input type="radio" name="rl_reply_use" value="y" onclick="rl_reply_use_show(this.value)" /></label>
-				<label>미사용<input type="radio" name="rl_reply_use" value="n" onclick="rl_reply_use_show(this.value)" /></label>
+				<label>사용<input type="radio" name="rl_reply_use" value="y" onclick="rl_reply_use_show(this.value)" <% if (rl_reply_use.equals("y")) { %>checked="checked"<% } %> /></label>
+				<label>미사용<input type="radio" name="rl_reply_use" value="n" onclick="rl_reply_use_show(this.value)" <% if (rl_reply_use.equals("n")) { %>checked="checked"<% } %> /></label>
             </td>
-            <td id="rl_reply_write" style="display:none;" >댓글 작성 권한</td>
-			<td id="rl_reply_write2" style="display:none;" >
-				<label>회원<input type="radio" name="rl_reply_write" value="y" /></label>
-				<label>비회원<input type="radio" name="rl_reply_write" value="n" /></label>
+            <td id="rl_reply_write" style="<% if (rl_reply_use.equals("y")) {%>display:;<% } else {%>display:none;<% }%>" >댓글 작성 권한</td>
+            <td id="rl_reply_write2" style="<% if (rl_reply_use.equals("y")) {%>display:;<% } else {%>display:none;<% }%>" >
+				<label>회원<input type="radio" name="rl_reply_write" value="y" <% if (rl_reply_write.equals("y")) { %>checked="checked"<% } %> /></label>
+				<label>비회원<input type="radio" name="rl_reply_write" value="n" <% if (rl_reply_write.equals("n")) { %>checked="checked"<% } %> /></label>
             </td>
 		</tr>		
 		<tr>
 			<td>게시판 이름</td>
-			<td colspan="3"><input id="rl_title" type="text" placeholder="게시판 이름을 입력하세요" style="width:850px;"></textarea></td>
+			<td colspan="3"><input name="rl_name" type="text" placeholder="게시판 이름을 입력하세요" style="width:850px;" value="<%=rl_name %>"></textarea></td>
 		</tr>
 		<tr>
 			<td>요청 내용</td>
-			<td colspan="3"><textarea id="rl_content" style="width:99%; height:100px" placeholder="요청 내용을 상세히 입력하세요"></textarea></td>
+			<td colspan="3"><textarea name="rl_content" style="width:99%; height:100px" placeholder="요청 내용을 상세히 입력하세요" ><%=rl_content %></textarea></td>
 		</tr>		
 		<tr>
 			<td colspan="4">※ 게시판 이름 및 분류와 맞지 않거나, 요청 내용이 부적절할 경우 반려될 수 있습니다..</td>

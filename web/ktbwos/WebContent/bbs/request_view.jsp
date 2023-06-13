@@ -6,22 +6,20 @@ String kind = request.getParameter("kind");
 String caption = "등록";		// 버튼에 사용할 캡션 문자열
 String action = "request_proc_in.jsp";	
 String rl_ctgr = "",rl_title = "",rl_name = "",rl_writer = "",rl_write = "",rl_reply_use = "",rl_reply_write = "", rl_content = "";
-
 int idx = 0;	// 글번호를 저장할 변수로 '수정'일 경우에만 사용됨
 int cpage = 1;	// 페이지번호를 저장할 변수로 '수정'일 경우에만 사용됨
 
 String schtype = request.getParameter("schtype");	// 검색 조건
 String keyword = request.getParameter("keyword");	// 검색어
-String args = "";
+String args = "?cpage=" + cpage;
 if (schtype != null && !schtype.equals("") && keyword != null && !keyword.equals("")) {
-	args = "&schtype=" + schtype + "&keyword=" + keyword;	// 링크에 검색 관련 값들을 쿼리스트링으로 연결해줌
+	args += "&schtype=" + schtype + "&keyword=" + keyword;	// 링크에 검색 관련 값들을 쿼리스트링으로 연결해줌
 }
 	idx = Integer.parseInt(request.getParameter("idx"));
 	cpage = Integer.parseInt(request.getParameter("cpage"));
 	
 	String where = " where rl_idx = " + idx;
 	sql = "select * from t_request_list " + where;
-	
 	try {
 		stmt = conn.createStatement();
 		rs = stmt.executeQuery(sql);
@@ -52,7 +50,12 @@ if (schtype != null && !schtype.equals("") && keyword != null && !keyword.equals
 			e.printStackTrace();
 		}
 	}
-%>
+boolean isPms = loginInfo.getMi_nick().equals(rl_writer) ? true : false ;
+String upLink = "", delLink = "";
+			upLink = "request_form.jsp" + args + "&kind=up&idx=" + idx;
+			delLink = "request_proc_del.jsp?idx=" + idx;
+%>		
+	
 
 <script>
 	function rl_reply_use_show (rl_reply_use) {
@@ -79,7 +82,7 @@ if (schtype != null && !schtype.equals("") && keyword != null && !keyword.equals
 	<table width="1100" >	
 		<tr>
 			<td>제목</td>
-			<td colspan="3"><input id="rl_title" type="text" placeholder="제목을 입력하세요" style="width:850px;" value="<%=rl_title %>"></td>
+			<td colspan="3"><%=rl_title %></td>
 		</tr >
 		<tr>
 			<td width="20%">요청자</td><td width="30%"><%=rl_writer %></td><td width="20%">작성 글번호</td><td width="30%"><%=idx %></td>
@@ -87,37 +90,26 @@ if (schtype != null && !schtype.equals("") && keyword != null && !keyword.equals
 		<tr>
 			<td>분류</td>
 			<td>
-				<select name="rl_ctgr" style="width:250px; height:25px; font-size:15px;">
-					<option value="a" <% if (rl_ctgr.equals("a")) { %>selected="selected"<% } %>>게임</option>
-					<option value="b" <% if (rl_ctgr.equals("b")) { %>selected="selected"<% } %>>연예</option>
-					<option value="c" <% if (rl_ctgr.equals("c")) { %>selected="selected"<% } %>>스포츠</option>
-				</select>
+				<%=rl_ctgr.equals("a") ? "게임" : rl_ctgr.equals("b") ? "연예" : "스포츠" %>
 			</td>
 			<td>게시글 작성 권한</td>
-			<td>
-				<label>회원<input type="radio" name="rl_write" value="y" <% if (rl_write.equals("y")) { %>checked="checked"<% } %>/></label>
-				<label>비회원<input type="radio" name="rl_write" value="n" <% if (rl_write.equals("n")) { %>checked="checked"<% } %>/></label>
-			</td>
+			<td><%=(rl_write.equals("y")) ? "회원" : "비회원" %></td>
 		</tr>
 		<tr>
 			<td>댓글 사용 여부</td>
-			<td>
-				<label>사용<input type="radio" name="rl_reply_use" value="y" <% if (rl_reply_use.equals("y")) { %>checked="checked"<% } %> onclick="rl_reply_use_show(this.value)" /></label>
-				<label>미사용<input type="radio" name="rl_reply_use" value="n" <% if (rl_reply_use.equals("y")) { %>checked="checked"<% } %> onclick="rl_reply_use_show(this.value)" /></label>
-            </td>
-            <td id="rl_reply_write" style="display:none;" >댓글 작성 권한</td>
-			<td id="rl_reply_write2" style="display:none;" >
-				<label>회원<input type="radio" name="rl_reply_write" value="y" <% if (rl_reply_write.equals("y")) { %>checked="checked"<% } %> /></label>
-				<label>비회원<input type="radio" name="rl_reply_write" value="n" <% if (rl_reply_write.equals("n")) { %>checked="checked"<% } %> /></label>
-            </td>
+				<td><%=(rl_reply_use.equals("y")) ? "사용" : "미사용" %></td>
+				<% if (rl_reply_use.equals("y")) { %>
+			    <td>댓글 작성 권한</td>
+			<td><%=(rl_reply_write.equals("a")) ? "회원 전용" : "모두 가능" %></td>
+            <% } %>
 		</tr>		
 		<tr>
 			<td>게시판 이름</td>
-			<td colspan="3"><input id="rl_title" type="text" placeholder="게시판 이름을 입력하세요" style="width:850px;" value="<%=rl_name %>"></textarea></td>
+			<td colspan="3"><%=rl_name %></td>
 		</tr>
 		<tr>
 			<td>요청 내용</td>
-			<td colspan="3"><textarea id="rl_content" style="width:99%; height:100px" placeholder="요청 내용을 상세히 입력하세요" ><%=rl_content %></textarea></td>
+			<td colspan="3"><textarea readonly="readonly" id="rl_content" style="width:99%; height:100px" placeholder="요청 내용을 상세히 입력하세요" ><%=rl_content %></textarea></td>
 		</tr>		
 		<tr>
 			<td colspan="4">※ 게시판 이름 및 분류와 맞지 않거나, 요청 내용이 부적절할 경우 반려될 수 있습니다..</td>
@@ -129,7 +121,18 @@ if (schtype != null && !schtype.equals("") && keyword != null && !keyword.equals
 	
 	
 	<span style="display:inline-block; float:right; margin-top:5px; margin-left:10px;">
-		<input type="submit" value="수정">
+	
+	<%	if (isPms) {  %>
+	<input type="button" value="수정" onclick="location.href='<%=upLink %>';" />
+<script>
+function isDel() {
+	if (confirm("정말 삭제하시겠습니까?\\n삭제된 글은 복구 불가합니다.")) {
+		location.href = "<%=delLink %>";
+	}
+}
+</script>
+	<input type="button" value="글삭제" onclick="isDel();" />
+<% } %>
 		<input type="button" value="취소" onclick="history.back();">
 	</span>	
 </form>

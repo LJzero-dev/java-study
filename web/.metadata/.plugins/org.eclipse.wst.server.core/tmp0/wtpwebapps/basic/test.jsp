@@ -1,18 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<% boolean isok = true; %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-test1
-<%
-String str = "<br>" + "test2";
-out.println(str);
-%>
-<%
-out.println(str + "a");
-%>
+<script>
+	if (<%=isok %>) {
+		alert("가능");
+	} else {
+		alert("불가능");
+	}
+</script>
+
 </body>
 </html>

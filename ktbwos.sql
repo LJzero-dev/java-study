@@ -127,7 +127,10 @@ create table t_request_list (
 insert into t_request_list (rl_ctgr, rl_title, rl_name, rl_writer, rl_write, rl_reply_use, rl_reply_write, rl_content) values ('a', '홍길동 키우기 게시판 요청합니다', '홍길동 키우기', '전우치', 'y', 'y', 'y', '만들어 주세요');
 select * from t_request_list;
 
+update t_request_list set rl_ctgr = '' , rl_title = '', rl_write = '', rl_reply_use = '', rl_reply_write = '', rl_content = '' where rl_idx = '';
 
+use ktbwos;
+select * from t_member_info;
 drop table t_best_list;
 
 create table t_best_list (
@@ -145,8 +148,8 @@ create table t_best_list (
 select bl_date from t_best_list where bl_date < left(now(), 7) and bl_date > left(DATEADD(DAY, -10, now()), 7);
 
 
-
-
+select * from t_request_list;
+delete from t_request_list where rl_idx = 18 and rl_writer = '홍길동';
 
 
 

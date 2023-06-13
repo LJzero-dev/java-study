@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../_inc/inc_head.jsp" %>
 <%
+if (!isLogin) {
+	out.println("<script>");
+	out.println("alert('로그인 후 이용 부탁드립니다.'); history.back();");
+	out.println("</script>");	
+	out.close();
+}
 request.setCharacterEncoding("utf-8");
 String kind = request.getParameter("kind");
 String caption = "등록";		// 버튼에 사용할 캡션 문자열
@@ -81,7 +87,7 @@ if (kind.equals("up")) {	// 게시글 수정 폼일 경우
 <div style="width:1100px; margin:0 auto;">
 	<a href="/ktbwos/bbs/request_list.jsp" class="alltext">전체글</a>
 	<span style="display:inline-block; float:left; margin-top:5px; margin-left:10px;">요청 게시판</span>
-<form action="request_proc_up.jsp" >
+<form action="<%=action %>" >
 <input type="hidden" name="idx" value="<%=idx %>">
 <input type="hidden" name="cpage" value="<%=cpage %>">
 	<table width="1100" >	

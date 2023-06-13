@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../_inc/inc_head.jsp" %>
 <%
+if (!isLogin) {
+	out.println("<script>");
+	out.println("alert('로그인 후 이용 부탁드립니다.'); history.back();");
+	out.println("</script>");	
+	out.close();
+}
 request.setCharacterEncoding("utf-8");
 int cpage = 1, psize = 3, bsize = 3, rcnt = 0, pcnt = 0;
 
@@ -115,7 +121,7 @@ if (rs.next()) {
 <br />
 <table width="1100" align="center">
 <tr>
-<td width="900">
+<td width="1100" align="center">
 <%
 if (rcnt > 0) {	// 게시글이 있으면
 	String link = "request_list.jsp?cpage=";

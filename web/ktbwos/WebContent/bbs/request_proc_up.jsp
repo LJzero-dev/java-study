@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../_inc/inc_head.jsp" %>
 <%
+if (!isLogin) {
+	out.println("<script>");
+	out.println("alert('로그인 후 이용 부탁드립니다.'); history.back();");
+	out.println("</script>");	
+	out.close();
+}
 request.setCharacterEncoding("utf-8");
 int cpage = Integer.parseInt(request.getParameter("cpage"));
 int idx = Integer.parseInt(request.getParameter("idx"));
@@ -11,7 +17,6 @@ if (schtype != null && !schtype.equals("") && keyword != null && !keyword.equals
 	args += "&schtype=" + schtype + "&keyword=" + keyword;	// 링크에 검색 관련 값들을 쿼리스트링으로 연결해줌
 }
 
-System.out.println("괜찮니~?");
 String rl_reply_write = "";
 String rl_ctgr = request.getParameter("rl_ctgr");
 String rl_title = getRequest(request.getParameter("rl_title"));
@@ -29,7 +34,7 @@ String where = "where rl_idx = " + idx;
 try {
 	stmt = conn.createStatement();
 	sql = "update t_request_list set rl_ctgr = '" + rl_ctgr + "' , rl_title = '" + rl_title + "', rl_write = '" + rl_write + "', rl_reply_use = '" + rl_reply_use + "', rl_reply_write = '" + rl_reply_write + "', rl_content = '" + rl_content + "' " + where;
-	System.out.println(sql);
+	// System.out.println(sql);
 	int result = stmt.executeUpdate(sql);
 	out.println("<script>");
 	if (result == 1 ) {		

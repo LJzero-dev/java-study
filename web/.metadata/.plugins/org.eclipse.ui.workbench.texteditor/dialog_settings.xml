@@ -6,36 +6,36 @@
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="" key="selection"/>
+		<item value="con" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="공지"/>
-			<item value="rl_isvie"/>
-			<item value="rl_isview"/>
-			<item value="writer"/>
-			<item value="fl_title"/>
+			<item value="con"/>
+			<item value="로그인"/>
+			<item value="delLink"/>
+			<item value="args"/>
 			<item value="upLink"/>
-			<item value="sql"/>
-			<item value="select"/>
-			<item value="t_free"/>
-			<item value="mall"/>
-			<item value="검색"/>
-			<item value="&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot; pageEncoding=&quot;UTF-8&quot;%&gt;"/>
-			<item value="정말"/>
-			<item value="notice_proc_del"/>
-			<item value="del"/>
+			<item value="자유"/>
+			<item value="게시판 이름"/>
+			<item value="게시글"/>
+			<item value="게시글 작성"/>
+			<item value="rl_reply_write"/>
+			<item value="cpage"/>
+			<item value="글목록"/>
+			<item value="rl_content"/>
+			<item value="rl_reply_use"/>
+			<item value="rl_write"/>
 		</list>
 		<list key="replacehistory">
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="288" key="DIALOG_WIDTH"/>
-		<item value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|5|0|맑은 고딕" key="DIALOG_FONT_NAME"/>
+		<item value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕" key="DIALOG_FONT_NAME"/>
 		<item value="391" key="DIALOG_HEIGHT"/>
-		<item value="1515" key="DIALOG_X_ORIGIN"/>
-		<item value="181" key="DIALOG_Y_ORIGIN"/>
+		<item value="1508" key="DIALOG_X_ORIGIN"/>
+		<item value="450" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>

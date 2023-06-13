@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../_inc/inc_head.jsp" %>
 <%
+if (!isLogin) {
+	out.println("<script>");
+	out.println("alert('로그인 후 이용 부탁드립니다.'); history.back();");
+	out.println("</script>");	
+	out.close();
+}
 request.setCharacterEncoding("utf-8");
 String rl_reply_write = "";
 String rl_ctgr = request.getParameter("rl_ctgr");
